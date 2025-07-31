@@ -1,0 +1,106 @@
+/* Reset and base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+/* Main container layout */
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Left image section */
+.left {
+  flex: 1 1 40%;
+  max-height: 500px;
+}
+
+.left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right content section */
+.right {
+  flex: 1 1 60%;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.right .top h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.right .top p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.right .top em {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.right .top strong {
+  color: #444;
+}
+
+.right .bottom {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.right .bottom button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.right .bottom button:hover {
+  background-color: #45a049;
+}
+
+.right .bottom button a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .left, .right {
+    flex: 1 1 100%;
+  }
+
+  .right {
+    padding: 20px;
+  }
+}
