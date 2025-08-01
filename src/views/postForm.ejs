@@ -26,6 +26,8 @@
     <label for="content">Content</label><br>
     <textarea name="content" rows="10" cols="50" placeholder="Write your blog content here..." required></textarea><br><br>
 
+    <input type="hidden" name="email" value="<%= user ? user.email : '' %>">
+
     <div class="btn">
       <button type="submit">Publish</button>
     </div>

@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
@@ -6,10 +7,8 @@ const postSchema = new mongoose.Schema({
   category: String,
   content: String,
   image: String,
-  date: {
-    type: Date,
-    default: Date.now,
-  },
+  email: String,     
+  date: Date
 });
 
 module.exports = mongoose.model("Post", postSchema);
