@@ -8,18 +8,15 @@ require("dotenv").config();
 
 const router = express.Router();
 
-// ---------- Multer Setup ----------
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// ---------- ImageKit Configuration ----------
 const imagekit = new ImageKit({
   publicKey: process.env.IMAGEKIT_PUBLIC_KEY,
   privateKey: process.env.IMAGEKIT_PRIVATE_KEY,
   urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
 });
 
-// ---------- Show Single Blog Post with Decode ----------
 router.get("/detail/:id", async (req, res) => {
   try {
     const post = await postModel.findById(req.params.id);
@@ -42,12 +39,10 @@ router.get("/detail/:id", async (req, res) => {
   }
 });
 
-// ---------- Show Add Post Form ----------
 router.get("/add", isAuthenticated, (req, res) => {
   res.render("postForm", { user: req.user });
 });
 
-// ---------- Handle Add New Post ----------
 router.post("/add", isAuthenticated, upload.single("image"), async (req, res) => {
   const { title, author, category, content } = req.body;
   const email = req.user.email;
