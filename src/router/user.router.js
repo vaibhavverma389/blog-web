@@ -5,13 +5,11 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const JWT_SECRET = process.env.JWT_SECRET || "default_jwt_secret";
 
-// ------------------ Register ------------------
-// GET: Show Register Page
+
 router.get("/register", (req, res) => {
     res.render("register", { error: null });
 });
 
-// POST: Register New User
 router.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
 
@@ -35,20 +33,17 @@ router.post("/register", async (req, res) => {
     }
 });
 
-// ------------------ Login ------------------
-// GET: Show Login Page
+//vaibhav verma
 router.get("/login", (req, res) => {
     res.render("login", { error: null });
 });
 
-// POST: Login User
 router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     try {
         const user = await userModel.findOne({ email });
 
-        // Redirect to register if user not found
         if (!user) {
             return res.redirect("/users/register");
         }
@@ -75,8 +70,7 @@ router.post("/login", async (req, res) => {
         res.render("login", { error: "Login failed. Please try again." });
     }
 });
-
-// ------------------ Logout ------------------
+//vaibhav verma
 router.get("/logout", (req, res) => {
     res.clearCookie("token");
     res.redirect("/users/login");
