@@ -23,7 +23,4 @@ A fully functional **Blog Website** built with Node.js, Express, MongoDB, and EJ
 - **Auth**: Sessions / JWT
 - **Hosting**: [Vercel](https://vaibhavblog.onrender.com/)
 
----
-
-## 📁 Project Structure
 
