@@ -25,5 +25,11 @@
         <br>
         <p>if you dont have an account <a href="/users/register">Sign up</a></p>
     </form>
+    <% if (error) { %>
+  <script>
+    alert("<%= error %>");
+  </script>
+<% } %>
+
 </body>
 </html>

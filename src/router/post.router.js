@@ -80,53 +80,5 @@ router.post("/add", isAuthenticated, upload.single("image"), async (req, res) =>
 
 
 
-// ---------- Show Update Form ----------
-router.get("/update/:id", isAuthenticated, async (req, res) => {
-  try {
-    const post = await postModel.findById(req.params.id);
-    if (!post) return res.status(404).send("Post not found");
-    res.render("postUpdate.ejs", { post });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server error");
-  }
-});
-
-// ---------- Handle Post Update ----------
-router.post("/update/:id", isAuthenticated, upload.single("image"), async (req, res) => {
-  const { title, author, category, content } = req.body;
-  const updateData = { title, author, category, content };
-
-  try {
-    if (req.file) {
-      const imageUpload = await imagekit.upload({
-        file: req.file.buffer,
-        fileName: req.file.originalname,
-        folder: "/blog-posts",
-      });
-      updateData.image = imageUpload.url;
-    }
-
-    const updated = await postModel.findByIdAndUpdate(req.params.id, updateData, { new: true });
-    if (!updated) return res.status(404).send("Post not found");
-
-    res.redirect(`/posts/detail/${req.params.id}`);
-  } catch (err) {
-    console.error("Update error:", err.message);
-    res.status(500).send("Failed to update post");
-  }
-});
-
-// ---------- Delete Blog Post ----------
-router.post("/delete/:id", isAuthenticated, async (req, res) => {
-  try {
-    const deleted = await postModel.findByIdAndDelete(req.params.id);
-    if (!deleted) return res.status(404).send("Post not found");
-    res.redirect("/");
-  } catch (err) {
-    console.error("Delete error:", err.message);
-    res.status(500).send("Failed to delete post");
-  }
-});
 
 module.exports = router;
