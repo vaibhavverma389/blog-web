@@ -17,8 +17,18 @@
         <p><em>By <%= post.author %> | <%= post.date %></em></p><br>
         <p><%= post.content %></p><br>
         <p><strong>Category:</strong> <%= post.category %></p>
+
+        <% if (decode && decode.name === post.author) { %>
+          <div class="actions">
+            <form action="/post/update/<%= post._id %>" method="GET" style="display:inline;">
+              <button type="submit">Update</button>
+            </form>
+            <form action="/post/delete/<%= post._id %>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this post?');">
+              <button type="submit" style="color:red;">Delete</button>
+            </form>
+          </div>
+        <% } %>
       </div>
-      
     </div>
   </div>
 </body>
