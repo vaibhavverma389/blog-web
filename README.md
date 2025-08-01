@@ -1,4 +1,4 @@
-# blog-web
+
 # 📝 Blog Website
 
 A fully functional **Blog Website** built with Node.js, Express, MongoDB, and EJS. Users can register, log in, create blog posts, read others’ blogs, and manage their content with an intuitive user interface.
